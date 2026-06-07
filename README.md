@@ -62,6 +62,160 @@ I decided to go with RMP reviews for first semester courses at UMass Amherst. It
 
 ---
 
+## Sample Chunks
+
+**Chunk 1**
+Source: rmp_bio_151.txt | Professor: Jeff Laney
+[REVIEW 8]
+Date: October 2022
+Quality: 1/5 | Difficulty: 5/5
+Grade: A- | Attendance: Mandatory
+Tags: Tough grader, Lecture heavy
+Content: Do not take this class. I spent upwards of 3 hours every day, weekends included,
+trying to understand this material. Does not teach in a clear and understandable way.
+If you're a hard worker you will be fine but if not, you will fail. Very hard class.
+
+---
+
+**Chunk 2**
+Source: rmp_physics_151.txt | Professor: Jason Stevens
+[REVIEW 4]
+Date: October 2020
+Quality: 1/5 | Difficulty: 5/5
+Grade: F | Attendance: Not Mandatory
+Tags: Graded by few things, Test heavy, Tough grader
+Content: If you forgot Physics in high school, you're going to struggle badly.
+
+---
+
+**Chunk 3**
+Source: rmp_cs_160.txt | Professor: Ella Tuson
+[REVIEW 3]
+Date: December 2025
+Quality: 4/5 | Difficulty: 2/5
+Grade: A | Attendance: Mandatory | Would Take Again: Yes
+Tags: Hilarious, Caring
+Content: It's clear she is very passionate about the topics she teaches in class, and I do
+think she is a great lecturer when she teaches material. However, we did spend a lot of
+lecture time going over stuff that didn't really matter, and lecture attendance was
+unfortunately required. Overall, a top tier professor with some issues.
+
+---
+
+**Chunk 4**
+Source: rmp_bio_151.txt | Professor: Amanda Cass
+[REVIEW 8]
+Date: December 2025
+Quality: 5/5 | Difficulty: 1/5
+Grade: A | Attendance: Mandatory | Would Take Again: Yes
+Tags: Amazing lectures, Caring
+Content: Great professor. I didn't have to study for any tests because all the lectures
+had easily digestible information that stacked on top of each other. No complaints
+except for the TAs, they were all snobs who never could accept being wrong.
+
+---
+
+**Chunk 5**
+Source: rmp_cs_110.txt | Professor: Cole Reilly
+[REVIEW 4]
+Date: December 2024
+Quality: 4/5 | Difficulty: 2/5
+Grade: A | Attendance: Mandatory | Would Take Again: Yes
+Tags: Clear grading criteria, Caring, Accessible outside class
+Content: Cole is a good and caring professor. They are very accessible outside the class
+and will help you if you show some effort.
+
+## Retrieval Test Results
+
+**Query 1: "Is David Hamilton a good professor for PHY 151?"**
+Top 5 chunks returned:
+- rmp_physics_151.txt — David Hamilton (distance: 0.8190)
+- rmp_physics_151.txt — David Hamilton (distance: 0.8315)
+- rmp_cs_160.txt — Jaime Davila (distance: 0.8589)
+- rmp_physics_151.txt — David Hamilton (distance: 0.8611)
+- rmp_physics_151.txt — Boris Svistunov (distance: 0.9164)
+
+Why results 1, 2, and 4 are relevant: All three chunks contain the name "Hamilton"
+and "PHY 151" which directly match the query. The embedding model correctly identified
+semantic similarity between the query and reviews discussing Hamilton's teaching style,
+lecture quality, and homework load.
+
+---
+
+**Query 2: "Which BIO 151 professor should I avoid?"**
+Top 5 chunks returned:
+- rmp_bio_151.txt — Randall Phillis (distance: 0.8628)
+- rmp_bio_151.txt — Jeff Laney (distance: 0.8648)
+- rmp_bio_151.txt — Caralyn Zehnder (distance: 0.9208)
+- rmp_bio_151.txt — Amanda Cass (distance: 0.9454)
+- rmp_bio_151.txt — Amanda Cass (distance: 1.1180)
+
+Why results are relevant: All 5 chunks are from rmp_bio_151.txt, meaning retrieval
+correctly scoped to the right course. Result 2 (Laney) and result 5 (Cass negative
+review) are the most directly relevant — both contain strongly negative language
+that semantically matched the "avoid" intent of the query.
+
+---
+
+**Query 3: "What is the workload like for CICS 160 with Professor Davila?"**
+Top 5 chunks returned:
+- rmp_cs_160.txt — Jaime Davila (distance: 0.9467)
+- rmp_cs_160.txt — Jaime Davila (distance: 0.9560)
+- rmp_cs_160.txt — Jaime Davila (distance: 1.0060)
+- rmp_cs_110.txt — Cheryl Swanier (distance: 1.1181)
+- rmp_bio_151.txt — Randall Phillis (distance: 1.1622)
+
+Why results 1-3 are relevant: The top 3 chunks all come from rmp_cs_160.txt and
+are attributed to Davila, directly matching both the course and professor in the
+query. Results 4 and 5 are off-target but the LLM correctly ignored them when
+generating the answer.
+
+## Example Responses
+
+**Query: "Which BIO 151 professor should I avoid?"**
+Response: According to the reviews, there are two professors that students have
+expressed negative experiences with: Jeff Laney and Amanda Cass. One reviewer
+strongly advises against taking BIO 151 with Jeff Laney, stating that he is the
+"worst professor to ever exist in the bio department" and that his classes are
+"very poorly managed" (Professor: Jeff Laney, Source: rmp_bio_151.txt). Another
+reviewer warns against Amanda Cass, citing heinous study guides and confusing
+weekly quiz questions (Professor: Amanda Cass, Source: rmp_bio_151.txt). However,
+there is a conflicting review from a student who had a very positive experience
+with Cass. Based on the reviews, Jeff Laney is the professor students most strongly
+advise against.
+
+Sources:
+- rmp_bio_151.txt — Randall Phillis
+- rmp_bio_151.txt — Jeff Laney
+- rmp_bio_151.txt — Caralyn Zehnder
+- rmp_bio_151.txt — Amanda Cass
+
+---
+
+**Query: "What is the workload like for CICS 160 with Professor Davila?"**
+Response: According to the reviews from Professor Jaime Davila's CICS 160 class,
+the workload is described as easy with a difficulty rating of 2/5 by multiple
+reviewers. One reviewer mentions that the class is easy and that Professor Davila
+is always willing to help. Another reviewer notes that the lectures are amazing
+and office hours are incredibly helpful. There is no mention of an excessive or
+heavy workload in these reviews.
+
+Sources:
+- rmp_cs_160.txt — Jaime Davila
+- rmp_cs_110.txt — Cheryl Swanier
+- rmp_bio_151.txt — Randall Phillis
+
+---
+
+**Out-of-scope query: "What dining hall should I eat at?"**
+Response: I don't have enough information in my documents to answer that.
+
+Sources:
+- rmp_bio_151.txt — Caralyn Zehnder
+- rmp_cs_160.txt — Jaime Davila
+- rmp_math_131.txt — Eric Heinzman
+
+
 ## Grounded Generation
 
 <!-- Explain how your system enforces grounding — how does it prevent the LLM from answering
@@ -110,7 +264,7 @@ The LLM cites its sources explaining where each review is found in each txt docu
 |    |                                                  | exams, Canvas participation    | exams and Canvas participation questions         |                  |
 +----+--------------------------------------------------+--------------------------------+--------------------------------------------------+------------------+
 
-**Retrieval quality:** Relvant  
+**Retrieval quality:** Relevant  
 **Response accuracy:** Partially accurate
 
 ---
