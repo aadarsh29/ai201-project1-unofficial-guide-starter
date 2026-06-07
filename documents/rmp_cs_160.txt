@@ -1,0 +1,229 @@
+[DOCUMENT METADATA]
+Source: Rate My Professor
+Institution: UMass Amherst
+Course: CICS 160 (Object-Oriented Programming)
+Retrieved: June 2026
+
+================================================================================
+PROFESSOR: Jaime Davila
+================================================================================
+
+[REVIEW 1]
+Date: June 2025
+Quality: 5/5 | Difficulty: 2/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Caring, Accessible outside class, Helpful
+Content: While the content of this class is rather boring, Professor Davila is very caring and always willing to help. The grade is mainly based on projects and quizzes. The projects are more than manageable and it's easy to do well on the quizzes if you look at the examples posted, as they're very similar to the ones given in labs.
+
+---
+
+[REVIEW 2]
+Date: April 2025
+Quality: 4/5 | Difficulty: 2/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Caring, Accessible outside class, Helpful
+Content: The class is easy and Professor Davila is always willing to help. His style of teaching is quite boring and confusing, but tbh, it's CS. He's friendly and sometimes introduces some opportunities that you might like.
+
+---
+
+[REVIEW 3]
+Date: April 2025
+Quality: 5/5 | Difficulty: 2/5
+Grade: A | Attendance: Not Mandatory
+Tags: Helpful
+Content: Jaime is a good prof but this class is incredibly useless and you will learn nothing. Also the homeworks have a manually graded part yet he won't really tell you what he's exactly looking for. Quizzes aren't too bad but the labs are useless and outside of basic recursion, SOLID, and making classes you will probably never need to use this again.
+
+---
+
+[REVIEW 4]
+Date: March 2025
+Quality: 2/5 | Difficulty: 3/5
+Grade: B | Attendance: Not Mandatory
+Tags: Helpful
+Content: Attendance not mandatory, don't bother going. Watched lectures on 2x speed and lots of long, unnecessary tangents. Grading comprised of labs and projects (no exams), so that's a plus, but really wish they didn't waste time reviewing Python and spent more time on Java -- they kind of throw you in to it halfway through with no intro on the syntax.
+
+---
+
+[REVIEW 5]
+Date: February 2025
+Quality: 4/5 | Difficulty: 2/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Helpful
+Content: Prof did a nice job explaining material in lectures. When I took the course, there were no exams; only quizzes composing 30 percent of grade. Only complaint is that there were several times where I had to make regrade requests on the quizzes for major point deductions which didn't seem justified. Luckily, they were rectified shortly thereafter.
+
+---
+
+[REVIEW 6]
+Date: December 2024
+Quality: 3/5 | Difficulty: 2/5
+Grade: A | Attendance: Not Mandatory
+Tags: Graded by few things, Helpful
+Content: I did not care for this class and stopped going to my 8:30 lecture. To get an A I just showed up to labs (graded on completion), got 100s on the assignments (should probably start early), and did meh on the 3 quizzes (the SI quiz reviews were not that helpful).
+
+---
+
+[REVIEW 7]
+Date: December 2024
+Quality: 4/5 | Difficulty: 1/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Helpful
+Content: Jaime made sure to explain things clearly and he is a nice guy. The only reason I'm not giving a 5 is because this class moved very slowly and I wish I learned more than I did.
+
+---
+
+[REVIEW 8]
+Date: November 2024
+Quality: 5/5 | Difficulty: 2/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Gives good feedback, Inspirational, Graded by few things, Helpful
+Content: He cares so much about making his points clear. If you have trouble with programming and logic be sure he will make it easy for you to understand. His online support is also great, and has very deep knowledge of what he is talking about. His charisma is a plus.
+
+---
+
+[REVIEW 9]
+Date: June 2024
+Quality: 5/5 | Difficulty: 2/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Amazing lectures, Inspirational, Caring, Helpful
+Content: Somehow made a 300+ person lecture super engaging. Genuinely cares about teaching the content - inspired me to be a TA for this class.
+
+---
+
+[REVIEW 10]
+Date: April 2024
+Quality: 5/5 | Difficulty: 2/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Extra credit, Caring, Accessible outside class, Helpful
+Content: Professor Davila is genuinely one of the best professors in the CS department. Very accessible outside of class.
+
+---
+
+[REVIEW 11]
+Date: April 2024
+Quality: 5/5 | Difficulty: 1/5
+Grade: A+ | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Tough grader, Participation matters, Graded by few things, Helpful
+Content: Just do everything on time, study a bit for the quizzes.
+
+---
+
+[REVIEW 12]
+Date: February 2024
+Quality: 5/5 | Difficulty: 2/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Extra credit, Amazing lectures, Clear grading criteria, Helpful
+Content: He's a very realistic professor and does attempt to help you build skills that will be necessary in the workforce. For teaching such a big class (160), he's pretty good at trying to be friendly with students. A regular great professor. No stand-out bad qualities.
+
+---
+
+[REVIEW 13]
+Date: January 2024
+Quality: 4/5 | Difficulty: 2/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Gives good feedback, Accessible outside class, Helpful
+Content: Overall a really good professor. Your grade is based off 5 assignments, 4 quizzes and lab grades but it is very easy. If you need help, he and the TAs are available for office hours a lot.
+
+---
+
+[REVIEW 14]
+Date: December 2023
+Quality: 5/5 | Difficulty: 2/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Amazing lectures, Caring, Accessible outside class, Helpful
+Content: Overall, I enjoyed Prof. Davila's lectures, and office hours with him were incredibly helpful. He's a very caring professor who's always willing to help, and he'll get back to you super quickly if you ever send him a question.
+
+---
+
+[REVIEW 15]
+Date: September 2023
+Quality: 3/5 | Difficulty: 4/5
+Grade: A- | Attendance: Not Mandatory
+Tags: Hilarious, Lecture heavy, Online Savvy, Helpful
+Content: Has an accent and talks pretty fast, class was at 8am so it was a bit hard to be present as well. But there are recorded lectures.
+
+---
+
+[REVIEW 16]
+Date: September 2023
+Quality: 5/5 | Difficulty: 3/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Amazing lectures, Inspirational, Caring, Helpful
+Content: He is one of the sweetest professors I have ever had. He is funny and makes the lectures interesting. If you contact him outside the class, he will answer all your questions. He is a caring professor.
+
+---
+
+[REVIEW 17]
+Date: June 2023
+Quality: 5/5 | Difficulty: 4/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Caring, Respected, Accessible outside class, Helpful
+Content: Jaime is a very passionate lecturer and cares about his students' learning and understanding. He usually responds very quickly on Piazza and is very helpful one-on-one during office hours. His exams can be kind of difficult but he released some practice questions after a couple particularly rough exams.
+
+---
+
+[REVIEW 18]
+Date: June 2023
+Quality: 4/5 | Difficulty: 3/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Inspirational, Respected, Accessible outside class, Helpful
+Content: Excellent professor. Incredibly devoted to his students and genuinely interested in teaching. Course itself was not the greatest. I don't think he was in charge of the curriculum, but we moved so fast at the end. As soon as linked lists showed up, it started going downhill. Quizzes 2 and 3 were hard as well, but he adjusted the last one.
+
+---
+
+[REVIEW 19]
+Date: May 2023
+Quality: 4/5 | Difficulty: 3/5
+Grade: A- | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Caring, Respected, Accessible outside class, Helpful
+Content: He's a really nice professor and genuinely cares about his students. The only problem is that the course wasn't structured so well (probably because it's a new class) - we barely learned anything new the first half of the semester and the last half moved too fast. The documentation for projects often had mistakes but he is very understanding.
+
+---
+
+[REVIEW 20]
+Date: May 2023
+Quality: 4/5 | Difficulty: 2/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Hilarious, Caring, Accessible outside class, Helpful
+Content: Jaime is extremely nice and a good lecturer. He explains things very clearly and slowly, almost to the point that I wished he moved at a faster pace with the easier material. He responds often on Piazza and the projects and quizzes are pretty reasonable. The project documentation was confusing sometimes but that's to be expected with any CS class.
+
+---
+
+================================================================================
+PROFESSOR: Ella Tuson
+================================================================================
+
+[REVIEW 1]
+Date: February 2026
+Quality: 3/5 | Difficulty: 1/5
+Grade: A+ | Attendance: Mandatory | Would Take Again: Yes
+Tags: Helpful
+Content: She isn't the best lecturer, she rambles and gets off topic a lot. She also does not answer questions and is not very helpful when you ask her for clarifications on lab.
+
+---
+
+[REVIEW 2]
+Date: January 2026
+Quality: 3/5 | Difficulty: 1/5
+Grade: A | Attendance: Mandatory | Would Take Again: Yes
+Tags: Helpful
+Content: Professor Tuson is passionate about what she does and enjoys teaching; however, she tends to ramble a lot. Personally, it made me lose interest in the lecture. Additionally, she often beat around the bush when answering questions. She'd say that we were going to "get to that" or that we're "getting ahead," which seems counterintuitive.
+
+---
+
+[REVIEW 3]
+Date: December 2025
+Quality: 4/5 | Difficulty: 2/5
+Grade: A | Attendance: Mandatory | Would Take Again: Yes
+Tags: Hilarious, Caring
+Content: It's clear she is very passionate about the topics she teaches in class, and I do think she is a great lecturer when she teaches material. However, we did spend a lot of lecture time going over stuff that didn't really matter, and lecture attendance was unfortunately required. Overall, a top tier professor with some issues.
+
+---
+
+[REVIEW 4]
+Date: December 2025
+Quality: 3/5 | Difficulty: 2/5
+Grade: A | Attendance: Mandatory | Would Take Again: Yes
+Tags: Hilarious
+Content: Professor Tuson is a great person, but there were lectures where we got little done and almost half of our 75 minute lecture was spent laughing and discussing topics unrelated to the content we are learning. Otherwise, her lectures were sometimes boring and there was a daily attendance code. Quizzes and projects weren't too challenging.
+
+---

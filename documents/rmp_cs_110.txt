@@ -1,0 +1,107 @@
+[DOCUMENT METADATA]
+Source: Rate My Professor
+Institution: UMass Amherst
+Course: CICS 110 (Introduction to Computer Science I)
+Retrieved: June 2026
+
+================================================================================
+PROFESSOR: Cole Reilly
+================================================================================
+
+[REVIEW 1]
+Date: January 2026
+Quality: 5/5 | Difficulty: 2/5
+Grade: A+ | Attendance: Mandatory | Would Take Again: Yes
+Tags: Inspirational, Hilarious, Respected
+Content: Yo this guy is genuinely the goat. Do NOT regret picking my man Cole Reilly, made my semester a breeze. Funny, chill, and a good lecturer. Inspirational man.
+
+---
+
+[REVIEW 2]
+Date: January 2025
+Quality: 5/5 | Difficulty: 1/5
+Grade: A | Attendance: Mandatory | Would Take Again: Yes
+Tags: Helpful
+Content: Took him for both CS119 and CICS110 and he was great at both! Very approachable and kind and genuinely cares that you learn and succeed. Couldn't recommend more.
+
+---
+
+[REVIEW 3]
+Date: January 2025
+Quality: 5/5 | Difficulty: 2/5
+Grade: A | Attendance: Mandatory | Would Take Again: Yes
+Tags: Clear grading criteria, Gives good feedback, Hilarious
+Content: Cole is a funny guy who knows how to teach! All of his lectures are recorded, and the course material is neatly organized in Canvas/Piazza. His grading criteria make it very easy to do well in the class as long as you complete all of the work outside of class. He is accessible during and outside of class and will answer all of your questions.
+
+---
+
+[REVIEW 4]
+Date: December 2024
+Quality: 4/5 | Difficulty: 2/5
+Grade: A | Attendance: Mandatory | Would Take Again: Yes
+Tags: Clear grading criteria, Caring, Accessible outside class
+Content: Cole is a good and caring professor. They are very accessible outside the class and will help you if you show some effort.
+
+---
+
+[REVIEW 5]
+Date: December 2024
+Quality: 5/5 | Difficulty: 2/5
+Grade: A | Attendance: Mandatory | Would Take Again: Yes
+Tags: Amazing lectures, Hilarious, Caring
+Content: Cole is amazing, lectures are super clear and easy to follow. Awesome professor!!!
+
+---
+
+[REVIEW 6]
+Date: May 2024
+Quality: 5/5 | Difficulty: 3/5
+Grade: A | Attendance: Mandatory | Would Take Again: Yes
+Tags: Clear grading criteria, Lots of homework, Lecture heavy
+Content: Really helpful class and simple. Projects and labs can be submitted as many times as you want, so they should be easy 100s. Doing okay on exams while keeping up with every reading gets you an easy A.
+
+---
+
+[REVIEW 7]
+Date: March 2024
+Quality: 5/5 | Difficulty: 3/5
+Grade: A | Attendance: Not Mandatory | Would Take Again: Yes
+Tags: Amazing lectures, Hilarious, Caring
+Content: Cole gives great lectures that effectively explain Python concepts to students who have had no exposure to the topic. His tests are fair and he makes sure students are well prepared. Everyone in the course is accessible and the labs and projects are easy to follow. He's a super kind, laid-back professor who cares about his students. Worth taking.
+
+---
+
+================================================================================
+PROFESSOR: Ella Tuson
+================================================================================
+
+[REVIEW 1]
+Date: May 2026
+Quality: 5/5 | Difficulty: 3/5
+Grade: Rather not say | Attendance: Mandatory | Would Take Again: Yes
+Tags: Inspirational, Hilarious, Caring
+Content: They're very sweet. It's nice to see a professor with an actual personality. You can tell they love teaching and I would 100% recommend.
+
+---
+
+================================================================================
+PROFESSOR: Cheryl Swanier
+================================================================================
+
+[REVIEW 1]
+Date: May 2024
+Quality: 1/5 | Difficulty: 5/5
+Grade: A | For Credit: Yes
+Tags: Helpful (5 upvotes)
+Content: Very rude. Unkind. All interactions with her were unpleasant. If you must take the class, just try not to take her treatment of you personally.
+
+---
+
+[REVIEW 2]
+Date: September 2023
+Quality: 1/5 | Difficulty: 3/5
+Grade: A+ | Attendance: Not Mandatory (Online)
+Tags: Lots of homework
+Content: Extremely disorganized class and useless lectures. Barely responded to Piazza posts and was unclear in her responses. If possible, take CICS 110 with a different professor.
+
+---
