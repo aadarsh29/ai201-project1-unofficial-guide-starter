@@ -1,18 +1,22 @@
 """
 pipeline.py
-Milestone 3: Document Ingestion and Chunking
+Milestones 3 & 4: Document Pipeline + Embedding + Retrieval
 UMass Unofficial Guide RAG System
 
 Pipeline stages:
   1. Load .txt files from docs/
   2. Clean each document
   3. Chunk by "---" separator
-  4. Inspect and validate chunks
+  4. Embed chunks with all-MiniLM-L6-v2
+  5. Store in ChromaDB vector store
+  6. Retrieve top-k chunks for a query
 """
 
 import os
 import re
 import random
+from sentence_transformers import SentenceTransformer
+import chromadb
 
 
 # ─── STAGE 1: LOAD DOCUMENTS ───────────────────────────────────────────────
@@ -20,7 +24,7 @@ import random
 def load_documents(docs_dir="docs"):
     """
     Load all .txt files from the docs/ directory.
-    Returns a list of dicts with keys: 'source' (filename) and 'text' (raw content).
+    Returns a list of dicts with keys: 'source' and 'text'.
     """
     documents = []
     for filename in os.listdir(docs_dir):
@@ -40,25 +44,14 @@ def load_documents(docs_dir="docs"):
 
 def clean_document(text):
     """
-    Clean a document by removing metadata headers, separator lines,
-    section headers, and other boilerplate that shouldn't be embedded.
-    Keeps: review content, ratings, tags, professor/course context.
+    Clean a document by removing metadata headers, decorator lines,
+    and boilerplate. Keeps review content, ratings, professor/course context.
     """
-    # Remove the top-level document metadata block (everything before first [REVIEW or [PROFESSOR section)
-    # Keep professor headers as they provide context
-    
-    # Remove HTML entities just in case
     text = text.replace("&amp;", "&")
     text = text.replace("&nbsp;", " ")
     text = text.replace("&#39;", "'")
-
-    # Remove lines that are purely decorative (===... or ---...)
-    # We keep --- as chunk separators so only remove === lines
     text = re.sub(r"^={3,}\s*$", "", text, flags=re.MULTILINE)
-
-    # Normalize multiple blank lines to a single blank line
     text = re.sub(r"\n{3,}", "\n\n", text)
-
     return text.strip()
 
 
@@ -67,42 +60,30 @@ def clean_document(text):
 def chunk_document(doc):
     """
     Split a document into chunks using the '---' separator.
-    Each chunk = one review block, already self-contained.
-    Attaches source filename and professor/course context to each chunk.
-    Returns a list of dicts with keys: 'source', 'context', 'text'.
+    Each chunk = one review block, self-contained.
+    Attaches source filename and professor context to each chunk.
     """
     text = doc["text"]
     source = doc["source"]
-
-    # Extract the context header (professor name + course) from section headers
-    # These look like: "PROFESSOR: Cole Reilly" inside ===...=== blocks
     current_context = ""
-
     chunks = []
-    # Split on the --- separator
     raw_chunks = text.split("---")
 
     for raw_chunk in raw_chunks:
         chunk = raw_chunk.strip()
 
-        # Skip empty chunks
         if not chunk:
             continue
 
-        # If this chunk is a professor section header (contains PROFESSOR:), 
-        # update the context and skip embedding it as its own chunk
-        if chunk.startswith("PROFESSOR:") or "PROFESSOR:" in chunk:
-            # Extract professor name for context
+        if "PROFESSOR:" in chunk:
             match = re.search(r"PROFESSOR:\s*(.+)", chunk)
             if match:
                 current_context = match.group(1).strip()
             continue
 
-        # Skip document metadata blocks (start with [DOCUMENT METADATA])
         if chunk.startswith("[DOCUMENT METADATA]"):
             continue
 
-        # Skip very short chunks (less than 30 characters — likely stray separators)
         if len(chunk) < 30:
             continue
 
@@ -115,28 +96,93 @@ def chunk_document(doc):
     return chunks
 
 
-# ─── STAGE 4: INSPECT CHUNKS ───────────────────────────────────────────────
+# ─── STAGE 4: EMBED + STORE IN CHROMADB ────────────────────────────────────
 
-def inspect_chunks(all_chunks, sample_size=5):
+def embed_and_store(all_chunks, collection_name="umass_reviews"):
     """
-    Print a random sample of chunks for manual inspection.
-    Check: is each chunk readable, self-contained, and free of artifacts?
+    Embed all chunks using all-MiniLM-L6-v2 and store in ChromaDB.
+    Each chunk is stored with its text, embedding, and metadata
+    (source filename, professor context, chunk index).
+    Returns the ChromaDB collection and model.
+    """
+    print("\n  Loading embedding model (all-MiniLM-L6-v2)...")
+    model = SentenceTransformer("all-MiniLM-L6-v2")
+
+    print("  Embedding chunks...")
+    texts = [chunk["text"] for chunk in all_chunks]
+    embeddings = model.encode(texts, show_progress_bar=True)
+
+    print("  Storing in ChromaDB...")
+    client = chromadb.Client()
+
+    # Delete collection if it already exists (useful when re-running)
+    try:
+        client.delete_collection(collection_name)
+    except Exception:
+        pass
+
+    collection = client.create_collection(collection_name)
+
+    collection.add(
+        ids=[f"chunk_{i}" for i in range(len(all_chunks))],
+        embeddings=[embedding.tolist() for embedding in embeddings],
+        documents=texts,
+        metadatas=[
+            {
+                "source": chunk["source"],
+                "context": chunk["context"],
+                "chunk_index": i
+            }
+            for i, chunk in enumerate(all_chunks)
+        ]
+    )
+
+    print(f"  Stored {collection.count()} chunks in ChromaDB.")
+    return collection, model
+
+
+# ─── STAGE 5: RETRIEVAL ────────────────────────────────────────────────────
+
+def retrieve(query, collection, model, top_k=5):
+    """
+    Embed a query and retrieve the top-k most similar chunks from ChromaDB.
+    Returns a list of results with text, metadata, and distance scores.
+    """
+    query_embedding = model.encode([query])[0].tolist()
+
+    results = collection.query(
+        query_embeddings=[query_embedding],
+        n_results=top_k,
+        include=["documents", "metadatas", "distances"]
+    )
+
+    retrieved = []
+    for i in range(len(results["documents"][0])):
+        retrieved.append({
+            "text": results["documents"][0][i],
+            "source": results["source"] if "source" in results else results["metadatas"][0][i]["source"],
+            "context": results["metadatas"][0][i]["context"],
+            "distance": results["distances"][0][i]
+        })
+
+    return retrieved
+
+
+def print_retrieval_results(query, results):
+    """
+    Pretty-print retrieval results for a query.
     """
     print(f"\n{'='*60}")
-    print(f"CHUNK INSPECTION — {sample_size} random samples")
+    print(f"QUERY: {query}")
     print(f"{'='*60}")
-
-    sample = random.sample(all_chunks, min(sample_size, len(all_chunks)))
-    for i, chunk in enumerate(sample, 1):
-        print(f"\n--- Chunk {i} ---")
-        print(f"Source:  {chunk['source']}")
-        print(f"Context: {chunk['context']}")
-        print(f"Length:  {len(chunk['text'])} characters")
-        print(f"Text:\n{chunk['text'][:400]}")  # Print first 400 chars
-        if len(chunk['text']) > 400:
+    for i, result in enumerate(results, 1):
+        print(f"\n  Result {i}")
+        print(f"  Source:   {result['source']}")
+        print(f"  Context:  {result['context']}")
+        print(f"  Distance: {result['distance']:.4f}")
+        print(f"  Text:\n  {result['text'][:300]}")
+        if len(result['text']) > 300:
             print("  [truncated...]")
-
-    print(f"\n{'='*60}")
 
 
 # ─── MAIN ───────────────────────────────────────────────────────────────────
@@ -166,7 +212,6 @@ def main():
         all_chunks.extend(chunks)
     print(f"\n  Total chunks: {len(all_chunks)}")
 
-    # Validate chunk count
     if len(all_chunks) < 50:
         print("  WARNING: Fewer than 50 chunks — chunks may be too large.")
     elif len(all_chunks) > 2000:
@@ -174,10 +219,24 @@ def main():
     else:
         print("  Chunk count looks healthy.")
 
-    # Stage 4: Inspect
-    inspect_chunks(all_chunks, sample_size=5)
+    # Stage 4: Embed + Store
+    print("\n[Stage 4] Embedding and storing chunks...")
+    collection, model = embed_and_store(all_chunks)
 
-    return all_chunks
+    # Stage 5: Test Retrieval with 3 evaluation queries
+    print("\n[Stage 5] Testing retrieval...")
+
+    test_queries = [
+    "Is David Hamilton a good professor for physics 151?",
+    "Which BIO 151 professor should I avoid?",
+    "What is the workload like for CICS 160 with Professor Davila?",
+    ]
+
+    for query in test_queries:
+        results = retrieve(query, collection, model, top_k=5)
+        print_retrieval_results(query, results)
+
+    return collection, model, all_chunks
 
 
 if __name__ == "__main__":
