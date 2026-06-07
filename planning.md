@@ -9,27 +9,19 @@
 
 ## Domain
 
-<!-- What domain did you choose? Why is this knowledge valuable and hard to find through official channels? -->
+I decided to choose RMP ratings for first year courses, because a lot of incoming freshman may be unfamiliar with how choosing professors matters, and be eager to take on rigorous course work, or maybe just say that any option that they have for a course is fine as long as it's not too early in the day. The truth is when you have options you want to be all the more careful and involved with your decision making.
 
 ---
 
 ## Documents
 
-<!-- List your specific sources: URLs, subreddit names, forum threads, or file descriptions.
-     Aim for at least 10 sources that together cover different subtopics or perspectives within your domain. -->
-
 | # | Source | Description | URL or location |
 |---|--------|-------------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
+| 1 |Rate My Professors|Reviews for CICS 110 professors: Cole Reilly, Ella Tuson, Cheryl Swanier |docs/cics110_rmp_reviews.txt |
+| 2 |Rate My Professors |Reviews for CICS 160 professors: Jaime Davila, Ella Tuson |docs/cics160_rmp_reviews.txt |
+| 3 |Rate My Professors | Reviews for MATH 131 professors: Eric Heinzman, Angelica Simonetti, Brody Lynch|docs/math131_rmp_reviews.txt |
+| 4 |Rate My Professors | Reviews for PHY 151 professors: David Hamilton, Jason Stevens, Boris Svistunov|docs/phy151_rmp_reviews.txt |
+| 5 |Rate My Professors |Reviews for BIO 151 professors: Randall Phillis, Jeff Laney, Caralyn Zehnder, Amanda Cass |docs/bio151_rmp_reviews.txt |
 
 ---
 
@@ -40,11 +32,11 @@
      numbers fit the structure of your documents.
      A review-heavy corpus warrants different chunking than a long FAQ. -->
 
-**Chunk size:**
+**Chunk size:** 200 characters
 
-**Overlap:**
+**Overlap:** 0 characters
 
-**Reasoning:**
+**Reasoning:** The reviews are separated by --- so individual reviews that have a high similarity score should be able to match the question well. Overlap here would mix two different reviews up, which is not needed since the .txts are cleaned up already.
 
 ---
 
@@ -56,11 +48,11 @@
      would you weigh in choosing a different embedding model — context length, multilingual
      support, accuracy on domain-specific text, latency? -->
 
-**Embedding model:**
+**Embedding model:** all-MiniLM-L6-v2 via sentence transformers  
 
-**Top-k:**
+**Top-k:** 5
 
-**Production tradeoff reflection:**
+**Production tradeoff reflection:** because the chunks are small enough that we dont require large context windows, and it can run locally which keeps it free! If I had to use OpenAI's text-embedding instead, it would be more accurate but we'd pay per token.
 
 ---
 
@@ -73,11 +65,11 @@
 
 | # | Question | Expected answer |
 |---|----------|-----------------|
-| 1 | | |
-| 2 | | |
-| 3 | | |
-| 4 | | |
-| 5 | | |
+| 1 |"Who is the most recommended professor for PHY 151?"|David Hamilton |
+| 2 |"Which BIO 151 professor should I avoid?" | Jeff Laney (overwhelmingly negative reviews)|
+| 3 |"Which CICS 110 professor should I avoid?" | Cheryl Swanier (rude, disorganized, negative reviews)|
+| 4 | "What is the workload like for CICS 160 with Professor Davila?"| No exams, graded on projects/quizzes/labs, manageable workload|
+| 5 |"What is the workload like for MATH 131 with Eric Heinzman?" |Expected: Homework is challenging but prepares you for exams, practice exams match real exams closely, participation questions on Canvas |
 
 ---
 
@@ -87,19 +79,47 @@
      Consider: noisy or inconsistent documents, missing source attribution, off-topic
      retrieval, chunks that split key information across boundaries. -->
 
-1.
+1. Since the chunks are review based, it could find chunks that allign with some keywords of the question in a completely unrelated class. Like where do I study optimization could be in both Physics, CS or Math classes and come up in different contexts.
 
-2.
+2. It could also just be a bunch of trolling in the reviews glazing professors for the fun of it, where a professor who has a 1 overall but one 5 rating gets bumped up because a keyword in the trolling comment gets matched heavily.
 
 ---
 
 ## Architecture
 
-<!-- Draw a diagram of your pipeline showing the five stages:
-     Document Ingestion → Chunking → Embedding + Vector Store → Retrieval → Generation
-     Label each stage with the tool or library you're using.
-     You can use ASCII art, a Mermaid diagram, or embed a sketch as an image.
-     You'll use this diagram as context when prompting AI tools to implement each stage. -->
+```+------------------+       +------------------+       +---------------------------+
+|                  |       |                  |       |                           |
+| Document         |  -->  |   Chunking       |  -->  |  Embedding + Vector Store |
+| Ingestion        |       |                  |       |                           |
+|                  |       |                  |       |                           |
+| os / pathlib     |       | Split on "---"   |       | all-MiniLM-L6-v2          |
+| (reads .txt      |       | separator        |       | (sentence-transformers)   |
+| files from       |       | ~200-350 chars   |       |                           |
+| docs/)           |       | per chunk        |       | ChromaDB vector store     |
+|                  |       | 0 overlap        |       |                           |
++------------------+       +------------------+       +---------------------------+
+                                                                    |
+                                                                    v
+                                                       +---------------------------+
+                                                       |                           |
+                                                       |       Retrieval           |
+                                                       |                           |
+                                                       | Semantic search, top-5    |
+                                                       | chunks by cosine          |
+                                                       | similarity                |
+                                                       |                           |
+                                                       +---------------------------+
+                                                                    |
+                                                                    v
+                                                       +---------------------------+
+                                                       |                           |
+                                                       |       Generation          |
+                                                       |                           |
+                                                       | LLM synthesizes answer    |
+                                                       | from retrieved chunks     |
+                                                       | with citations            |
+                                                       |                           |
+                                                       +---------------------------+ ```
 
 ---
 
